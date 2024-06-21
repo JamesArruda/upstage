@@ -1,20 +1,24 @@
 dist: jammy
 language: python
-python:
-  - "3.11"
-  - "3.12"
 install:
   - pip install .[test]
 stages:
   - lint
-  - test
+  - test_11
+  - test_12
 jobs:
   include:
     - stage: lint
+      python: "3.11"
       script:
-        - pyproject-fmt .\pyproject.toml --check
+        - pwd
+        - pyproject-fmt --check .\pyproject.toml 
         - ssort --check .\src\ 
         - ruff format --check .\src\
         - mypy --show-error-codes -p upstage
-    - stage: test
+    - stage: test_11
+      python: "3.11"
+      script: pytest
+    - stage: test_12
+      python: "3.12"
       script: pytest
