@@ -3,7 +3,6 @@
 UPSTAGE is a **U**niversal **P**latform for **S**imulating
 **T**asks and **A**ctors with **G**raphs and **E**vents built atop
 [*SimPy 4*][simpy].
-[*SimPy 4*][simpy].
 
 ## What is UPSTAGE for?
 
