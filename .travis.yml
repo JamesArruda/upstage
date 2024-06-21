@@ -12,6 +12,7 @@ jobs:
       python: "3.11"
       script:
         - pwd
+        - ls
         - pyproject-fmt --check .\pyproject.toml 
         - ssort --check .\src\ 
         - ruff format --check .\src\
