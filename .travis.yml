@@ -5,5 +5,16 @@ python:
   - "3.12"
 install:
   - pip install .[test]
-script:
-    - pytest
+stages:
+  - lint
+  - test
+jobs:
+  include:
+    - stage: lint
+      script:
+        - pyproject-fmt .\pyproject.toml --check
+        - ssort --check .\src\ 
+        - ruff format --check .\src\
+        - mypy --show-error-codes -p upstage
+    - stage: test
+      script: pytest
