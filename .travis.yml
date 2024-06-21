@@ -11,11 +11,9 @@ jobs:
     - stage: lint
       python: "3.11"
       script:
-        - pwd
-        - ls
-        - pyproject-fmt --check .\pyproject.toml 
-        - ssort --check .\src\ 
-        - ruff format --check .\src\
+        - pyproject-fmt --check pyproject.toml 
+        - ssort --check src
+        - ruff format --check src
         - mypy --show-error-codes -p upstage
     - stage: test_11
       python: "3.11"
