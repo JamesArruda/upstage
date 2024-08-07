@@ -147,7 +147,7 @@ Let's also make an Actor for the checkout lane, so we have a simple location to 
 
 Here we use the built-in |ResourceState| to use a |SelfMonitoringStore| as an Actor state. The self-monitoring store is a subclass of the SimPy ``Store`` that records the number of items
 in the store whenever there is a get or put. The ``ResourceState`` could accept a default and not require a definition in the instantiation, but here we are demonstrating how to instantiate 
-a ``ResourceState`` in a way that lets you paramterize the store's values (in this case, the kind and the capacity). Other resources, such as containers, will have capacities and initial values.
+a ``ResourceState`` in a way that lets you parameterize the store's values (in this case, the kind and the capacity). Other resources, such as containers, will have capacities and initial values.
 
 Actors also have ``knowledge``, which is a simple dictionary attached to the actor that has an interface through the actor and tasks. This allows actors to hold runtime-dependent information
 that isn't tied to a state. Knowledge can be set and accessed with error-throwing checks for its existence, or for checks that it doesn't already have a value. An example is given later.
@@ -170,7 +170,7 @@ Let's define the tasks that wait for a customer and check the customer out.
     :linenos:
 
     from typing import Generator
-    TASK_GEN = Generator[UP.Event, Any, None]
+    from upstage.type_help import TASK_GEN
 
 
     class WaitInLane(UP.Task):
@@ -347,34 +347,13 @@ The flow of Tasks is controlled by a TaskNetwork, and the setting of the queue w
     }
 
     task_links = {
-        "GoToWork": {
-                "default": "TalkToBoss",
-                "allowed":["TalkToBoss"],
-            },
-        "TalkToBoss": {
-                "default": "WaitInLane",
-                "allowed":["WaitInLane"],
-            },
-        "WaitInLane": {
-                "default": "DoCheckout",
-                "allowed":["DoCheckot", "Break"],
-            },
-        "DoCheckout": {
-                "default": "WaitInLane",
-                "allowed":["WaitInLane"],
-            },
-        "Break": {
-                "default": "ShortBreak",
-                "allowed":["ShortBreak", "NightBreak"],
-            },
-        "ShortBreak": {
-                "default": "WaitInLane",
-                "allowed":["WaitInLane"],
-            },
-        "NightBreak": {
-                "default": "GoToWork",
-                "allowed":["GoToWork"],
-            },
+        "GoToWork": UP.TaskLinks(default="TalkToBoss",allowed=["TalkToBoss"]),
+        "TalkToBoss": UP.TaskLinks(default="WaitInLane",allowed=["WaitInLane"]),
+        "WaitInLane": UP.TaskLinks(default="DoCheckout",allowed=["DoCheckout", "Break"]),
+        "DoCheckout": UP.TaskLinks(default="WaitInLane",allowed=["WaitInLane"]),
+        "Break": UP.TaskLinks(default="ShortBreak",allowed=["ShortBreak", "NightBreak"]),
+        "ShortBreak": UP.TaskLinks(default="WaitInLane",allowed=["WaitInLane"]),
+        "NightBreak": UP.TaskLinks(default="GoToWork",allowed=["GoToWork"]),
     }
 
     cashier_task_network = UP.TaskNetworkFactory(
