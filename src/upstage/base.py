@@ -496,3 +496,34 @@ def add_stage_variable(varname: str, value: Any) -> None:
     if varname in stage:
         raise UpstageError(f"Variable '{varname}' already exists in the stage")
     setattr(stage, varname, value)
+
+
+def get_stage_variable(varname: str) -> Any:
+    """Get a variable from the context's stage.
+
+    Args:
+        varname (str): Name of the variable
+
+    Returns:
+        Any: The variable's value
+    """
+    try:
+        stage = STAGE_CONTEXT_VAR.get()
+    except LookupError:
+        raise ValueError("Stage should have been set.")
+    if varname not in stage:
+        raise UpstageError(f"Variable '{varname}' does not exist in the stage")
+    return getattr(stage, varname)
+
+
+def get_stage() -> StageProtocol:
+    """Return the entire stage object.
+
+    Returns:
+        StageProtocol: The stage
+    """
+    try:
+        stage = STAGE_CONTEXT_VAR.get()
+    except LookupError:
+        raise ValueError("Stage should have been set.")
+    return stage

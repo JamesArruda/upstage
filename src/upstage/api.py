@@ -18,6 +18,8 @@ from upstage.base import (
     UpstageBase,
     UpstageError,
     add_stage_variable,
+    get_stage,
+    get_stage_variable,
 )
 
 # Comms
@@ -90,6 +92,8 @@ __all__ = [
     "NamedUpstageEntity",
     "EnvironmentContext",
     "add_stage_variable",
+    "get_stage_variable",
+    "get_stage",
     "All",
     "Any",
     "Event",
