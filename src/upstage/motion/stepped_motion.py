@@ -122,7 +122,7 @@ class SteppedMotionManager(UpstageBase):
             return True
         visibility: bool = getattr(detectable, detect_state)
         return visibility
-    
+
     @staticmethod
     def _detect_dist(loc1: LOC_TYPES, radius: float, loc2: LOC_TYPES, sensor: SensorType) -> bool:
         """Run a detectability check, including sensor custom function.

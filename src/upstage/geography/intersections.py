@@ -14,6 +14,8 @@ from .wgs84 import WGS84
 
 
 class IntersectionError(Exception):
+    """An exception when intersection code fails."""
+
     ...
 
 
@@ -43,7 +45,9 @@ def _preprocess(
     while points <= 2:
         dist_between = dist_between / 2.0
         if dist_between < 100:
-            raise IntersectionError(f"Intersetion Segment {start_lla} -> {finish_lla} is too small!")
+            raise IntersectionError(
+                f"Intersetion Segment {start_lla} -> {finish_lla} is too small!"
+            )
         points = int(dist / dist_between) + 1
     ecef_point = earth.lla2ecef([point_lla])[0]
     assert len(ecef_point) == 3

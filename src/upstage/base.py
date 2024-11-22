@@ -20,7 +20,6 @@ from simpy import Environment as SimpyEnv
 from upstage.geography import INTERSECTION_LOCATION_CALLABLE, EarthProtocol
 from upstage.units import unit_convert
 
-
 CONTEXT_ERROR_MSG = "Undefined context variable: use EnvironmentContext"
 
 

@@ -5,9 +5,9 @@
 
 """The task network class, and factory classes."""
 
-from collections.abc import Mapping, Sequence
+from collections.abc import Generator, Mapping, Sequence
 from dataclasses import dataclass
-from typing import TYPE_CHECKING, Any, TypeVar, Generator
+from typing import TYPE_CHECKING, Any, TypeVar
 
 if TYPE_CHECKING:
     from upstage.actor import Actor

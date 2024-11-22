@@ -385,9 +385,7 @@ class Actor(SettableEnv, NamedUpstageEntity):
         """
         caller = get_caller_object()
         if isinstance(caller, Task) and caller._rehearsing:
-            raise UpstageError(
-                "Mimic state activated on rehearsal. This is unsupported/unstable"
-            )
+            raise UpstageError("Mimic state activated on rehearsal. This is unsupported/unstable")
         if self_state in self._mimic_states:
             raise UpstageError(f"{self_state} already mimicked")
         self._mimic_states[self_state] = (mimic_actor, mimic_state)
@@ -573,9 +571,7 @@ class Actor(SettableEnv, NamedUpstageEntity):
         """
         self._log_caller("set_task_queue")
         if self._task_queue[network_name]:
-            raise SimulationError(
-                f"Task queue on {self.name} is already set. Use append or clear."
-            )
+            raise SimulationError(f"Task queue on {self.name} is already set. Use append or clear.")
         self._task_queue[network_name] = list(task_list)
 
     def get_task_queue(self, network_name: str) -> list[str]:
