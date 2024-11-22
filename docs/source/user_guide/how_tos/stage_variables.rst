@@ -78,7 +78,7 @@ For convenience, you can also do the following:
     import upstage.api as UP
 
     with UP.EnvironmentContext() as env:
-        UP.get_stage_variable("altitude_units", "centimeters")
+        UP.add_stage_variable("altitude_units", "centimeters")
 
         stage = UP.get_stage()
         assert stage.altitude_units == "centimeters"
