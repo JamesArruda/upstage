@@ -50,7 +50,6 @@ class EarthProtocol(Protocol):
         self,
         loc1: LAT_LON | GEO_POINT,
         loc2: LAT_LON | GEO_POINT,
-        units: str,
     ) -> float:
         """Get the distance between two lat/lon (degrees) points."""
 

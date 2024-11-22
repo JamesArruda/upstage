@@ -45,6 +45,8 @@ def test_api() -> None:
         "Location",
         "CartesianLocation",
         "GeodeticLocation",
+        "CartesianLocationData",
+        "GeodeticLocationData",
         "LinearChangingState",
         "CartesianLocationChangingState",
         "State",

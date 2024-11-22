@@ -29,7 +29,13 @@ from upstage.communications.comms import CommsManager, Message, MessageContent
 from upstage.constants import PLANNING_FACTOR_OBJECT
 
 # Data types
-from upstage.data_types import CartesianLocation, GeodeticLocation, Location
+from upstage.data_types import (
+    CartesianLocation,
+    CartesianLocationData,
+    GeodeticLocation,
+    GeodeticLocationData,
+    Location,
+)
 
 # Events
 from upstage.events import All, Any, Event, FilterGet, Get, Put, ResourceHold, Wait
@@ -118,6 +124,8 @@ __all__ = [
     "CartesianLocation",
     "GeodeticLocation",
     "Location",
+    "CartesianLocationData",
+    "GeodeticLocationData",
     "LinearChangingState",
     "CartesianLocationChangingState",
     "State",
