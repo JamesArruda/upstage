@@ -5,8 +5,7 @@
 
 """Help for typing task and simpy generators."""
 
-from collections.abc import Generator
-from typing import Any
+from typing import Any, Generator
 
 from simpy import Event as SimEvent
 

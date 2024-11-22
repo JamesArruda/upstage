@@ -4,8 +4,7 @@
 # See the LICENSE file in the project root for complete license terms and disclaimers.
 """This file contains a Store that allows reservations."""
 
-from collections.abc import Generator
-from typing import Any
+from typing import Any, Generator
 
 from simpy import Environment, Event
 

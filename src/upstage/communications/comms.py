@@ -5,9 +5,8 @@
 
 """Comms message and commander classes."""
 
-from collections.abc import Generator
 from dataclasses import dataclass
-from typing import Any
+from typing import Any, Generator
 from uuid import uuid4
 
 from simpy import Event as SimpyEvent

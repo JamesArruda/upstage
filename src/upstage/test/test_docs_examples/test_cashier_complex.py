@@ -3,8 +3,7 @@
 # Licensed under the BSD 3-Clause License.
 # See the LICENSE file in the project root for license terms.
 
-from collections.abc import Generator
-from typing import Any
+from typing import Any, Generator
 
 import simpy as SIM
 
